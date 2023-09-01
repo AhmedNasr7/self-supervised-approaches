@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 
-from .resnet1d import ResNet1D
+from resnet1d import ResNet1D
 
 
 
@@ -145,7 +145,7 @@ class ResNet(nn.Module):
         self,
         length: int,
         num_classes: int,
-        freeze: bool
+        freeze: bool = False
     ) -> None:
 
         super().__init__()
@@ -158,11 +158,11 @@ class ResNet(nn.Module):
                 param.requres_grad = False
 
         # Linear classifier
-        self.classifier = LinearClassifier(self.encoder.emb_dim, num_classes)
+        self.fc = LinearClassifier(self.encoder.emb_dim, num_classes)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         e = self.encoder(x)
-        return self.classifier(e)
+        return self.fc(e)
     
 
 
