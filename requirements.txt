@@ -1,0 +1,17 @@
+numpy
+scipy
+pathlib
+numba
+torch 
+torchvision 
+lightning
+tensorboardX 
+easydict 
+pyyaml 
+scikit-image 
+tqdm 
+SharedArray 
+six
+watermark
+matplotlib
+torchsummary
